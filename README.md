@@ -17,27 +17,27 @@ The Whiskey Bottle Value Tracker Client is the front-end part of a microservices
 ## Installation
 1) Clone the repository
 
-```bash```
-Copy code
-git clone <repository-url>
-cd vite-project
+    ```bash
+    git clone <repository-url>
+    cd vite-project
+    ```
 
 2) Install dependencies
-```bash```
-Copy code
-npm install
+    ```bash
+    npm install
+    ```
 
 3) Environment Configuration
-Create a .env file in the root directory and add the API layer's URL:
 
-```env```
-Copy code
-VUE_APP_API_URL=http://booggle-api-endpoint
+    Create a .env file in the root directory and add the API layer's URL:
+    ```env
+    VUE_APP_API_URL=http://booggle-api-endpoint
+    ```
 
 4) Run the application
-```bash```
-Copy code
-npm run serve
+    ```bash
+    npm run dev
+    ```
 
 This will start the client app in development mode, accessible via http://localhost:8080.
 
