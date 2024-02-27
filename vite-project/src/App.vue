@@ -9,7 +9,43 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Booggle" />
+  <div id="app">
+    <input type="text" v-model="textInput" placeholder="Enter some text...">
+    <button @click="sendToAPI">Sent</button>
+    <p v-if="apiResponse">{{ apiResponse }}</p>
+  </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      textInput: '', // To hold the text input value
+      apiResponse: null, // To store the API response
+    };
+  },
+  methods: {
+    async sendToAPI() {
+      const url = 'http://booggleapi6-dev.us-west-2.elasticbeanstalk.com/bottles'; // Replace with your actual API endpoint
+      try {
+        const response = await fetch(url, {
+          method: 'GET', // or 'GET', depending on your API
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        //   body: JSON.stringify({ text: this.textInput }), // Adjust based on your API's expected format
+        });
+        const data = await response.json(); // Assuming the response is JSON
+        console.log(data);
+        this.apiResponse = data; // Update apiResponse with the result
+      } catch (error) {
+        console.error('Error:', error);
+        this.apiResponse = 'Failed to fetch data';
+      }
+    },
+  },
+}
+</script>
 
 <style scoped>
 .logo {
